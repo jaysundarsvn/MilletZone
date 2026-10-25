@@ -1,0 +1,31 @@
+# Order | siridhanya
+
+Source: https://mymilletzone.wixsite.com/siridhanya/order
+
+Captured: 2026-10-25T14:00:34+00:00
+
+![Sphere on Spiral Stairs](../media/73e1efeefa_11062b_952485dce28e4eac9e9f09d63fdc9ada~mv2.jpg)
+
+### ORDERING SIRIDHANYA MILLETS IS SIMPLE !!
+
+### Send a 'Hello' in whatsApp message with your full address, pincode, Mobile number. In reply, You will get a product list to begin with. please call us on 09492935095 OR Just send an email to mymilletzone@gmail.com With your name, full address, PIN CODE/Zipcode, Mobile number and YOUR requirement . In reply, You will get a product list to begin with...
+
+### The processed Siridhanya are NOT TREATED with fumigation or pesticides to increase shelf life. Organic, de-husked grains are attractive to storage pests. So, order for only a month's stock and consume them quickly.
+
+### OR REFRIGERATE THE GRAIN PACKETS for a longer period of storing. Who knows in nature, which pest has laid it's invisible eggs...
+
+###### MILLET ZONE MILLETS : UNPOLISHED, OPTIMUM FIBRE, ORGANIC & LOW GLYCEMIC INDEX FOOD GRAINS
+
+### 'PACKAGE' DELIVERY WITH
+
+### MILLET ZONE
+
+### SIRIDHANYA MILLETS :
+
+###### THROUGH 'LOCAL TRANSPORT' services for Hyderabad & Secunderabad', Telangana You can book a 'Rapido', or 'Porter' /'Dunzo' or a 'UBER' or 'Local Dehlivery' to deliver you the package from our outlet after completing the payment formalities through online/Google pay. (Call 9492935095 for details) THROUGH 'NAVATA PARCEL DELIVERY' : IF YOU ARE IN ANDHRA PRADESH/TELANGANA or PUNE, NASHIK, NAGPUR, BENGALURU, VADODARA & HAVE 'NAVATA ROAD TRANSPORT' branch in your city/town/nearby Village - (Check internet) it is useful to get your Millets at less expense if the quantity is above 25 kgs. Only you need to personally pick your package from Navata branch in your town, quoting the given LR number. 25 Kg to 50 kg sized packs can be sent with NAVATA fees & Hyd local travel(16 km) charges of approx.Rs. 700/- to 900. ( For destinations about 400-700 km around Hyd) DOOR DELIVERY to CUSTOMERS IN OTHER STATES in INDIA : SpeedPost/Regd. Postal parcel services are used to send you, if you live in prominent city or town or Village in any part of India. Please write a message to WhatsApp 09492935095 Courier Services have become 3 times more expensive from 2025-26. USA, CANADA, UAE(DUBAI), MIDDLE EAST, ASIA PACIFIC countries & AND EUROPE : International courier rates are Indian Rupees (INR) 450 to 1300 approx per Kg depending on destinations and the 'quantity' sent at a time. We now make use of various international courier services. Rare incidents involving 'Pakage opening' by customs/Agri Dept./checking happens and in some cases, officers may remove packages with or without reason and intimation. This upsets us & the customers . (Weighing done taking in to consideration extra 8 to 10 gms per each packet plus weight of thick carton used- which may increase weight by 1.5 to 2.0 kgs). * Please take quote from us and transfer payment by bank transfer, Pay pal, Remitly,or Transferwise. SEND an Email with enquiry to mymilletzone@gmail.com or Whatsapp enquiry to +91 9492935095 WAR TIMES like US- Iran or Ukraine-Russia wars will make the International courier charges go high. We encourage you to get great health and mitigate diseases with 5 Siri Dhanya and other useful products. Any doubts? Just call 0091 9492935095
+
+
+## Links found on this page
+
+- mymilletzone@gmail.com: mailto:mymilletzone@gmail.com
+- mymilletzone@gmail.com: mailto:mymilletzone@gmail.com

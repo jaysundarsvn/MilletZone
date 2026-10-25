@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://milletszone.com/sitemap.xml
