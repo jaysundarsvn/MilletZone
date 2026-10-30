@@ -1,6 +1,6 @@
-# Millets Zone website
+# Millet Zone website
 
-This repository contains the Millets Zone informational website and the source
+This repository contains the Millet Zone informational website and the source
 archive used to prepare its content. The website is a static site generated with
 Python; it does not need Node.js, npm, a database, or a web framework.
 

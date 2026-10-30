@@ -1,6 +1,6 @@
-# Millets Zone website
+# Millet Zone website
 
-A responsive, static informational website for **https://milletszone.com**. The supplied Millets Zone archive is the factual source; the Framer reference informs the visual design only. The website has no shopping, checkout, account system, database, or runtime framework dependency.
+A responsive, static informational website for **https://milletszone.com**. The supplied Millet Zone archive is the factual source; the Framer reference informs the visual design only. The website has no shopping, checkout, account system, database, or runtime framework dependency.
 
 ## Run locally
 
@@ -23,6 +23,10 @@ Run the build again after editing source files, then refresh the browser. The bu
 - [CONTENT-NOTES.md](./CONTENT-NOTES.md) records the page-by-page migration, exclusions, and incomplete or inconsistent source material.
 - [styles.css](./styles.css) defines the yellow, red, green, and white design, page layouts, and responsive styling.
 - [app.js](./app.js) provides browser interactions.
+- [carousel.css](./carousel.css) styles the responsive recipe carousel. It supports native touch scrolling, navigation arrows, and keyboard controls without autoplay.
+- [refinements.css](./refinements.css) contains the logo, compact grain layouts, reading sections, and book inquiry styles.
+- [content_rendering.py](./content_rendering.py) groups the original source blocks into complete grain, FAQ, community, plant, and learning-resource entries.
+- [assets/millet-zone-logo.png](./assets/millet-zone-logo.png) is the user-supplied logo, used unchanged in the header and footer.
 - [assets/images](./assets/images/) contains the restored, optimized images from the supplied archive.
 - [assets/asset-map.json](./assets/asset-map.json) records image provenance and local image paths.
 - [scripts/validate.py](./scripts/validate.py) checks generated HTML for broken local links, assets and anchor targets, duplicate IDs, a single main heading, image alt attributes, canonical URLs, unresolved placeholders, and excluded purchase routes and controls.
