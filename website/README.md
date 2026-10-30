@@ -23,7 +23,6 @@ Run the build again after editing source files, then refresh the browser. The bu
 - [CONTENT-NOTES.md](./CONTENT-NOTES.md) records the page-by-page migration, exclusions, and incomplete or inconsistent source material.
 - [styles.css](./styles.css) defines the yellow, red, green, and white design, page layouts, and responsive styling.
 - [app.js](./app.js) provides browser interactions.
-- [carousel.css](./carousel.css) styles the responsive recipe carousel. It supports native touch scrolling, navigation arrows, and keyboard controls without autoplay.
 - [refinements.css](./refinements.css) contains the logo, compact grain layouts, reading sections, and book inquiry styles.
 - [content_rendering.py](./content_rendering.py) groups the original source blocks into complete grain, FAQ, community, plant, and learning-resource entries.
 - [assets/millet-zone-logo.png](./assets/millet-zone-logo.png) is the user-supplied logo, used unchanged in the header and footer.

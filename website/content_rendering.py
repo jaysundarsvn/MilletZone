@@ -99,11 +99,12 @@ def _feedback(page, helpers):
             quotes[-1] += ' ' + text
         else:
             quotes.append(text)
-    groups = []
+    out = ['<div class="community-voices">']
     for i, quote in enumerate(quotes, 1):
         body = '<blockquote class="source-quote"><p>' + helpers['linked_text'](quote) + '</p></blockquote>'
-        groups.append(('Community comment ' + str(i), body))
-    return _sections(groups, helpers, 'community-comment', first_open=True)
+        out.append(f'<section class="community-comment" id="community-comment-{i}"><h2>Community comment {i}</h2><div class="section-body">{body}</div></section>')
+    out.append('</div>')
+    return ''.join(out), [('community-comment-' + str(i), 'Community comment ' + str(i)) for i in range(1, len(quotes) + 1)]
 
 
 def _kashya(page, helpers):

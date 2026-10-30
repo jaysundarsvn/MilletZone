@@ -100,7 +100,7 @@ def footer(prefix):
 def write_page(path, title, description, body, active='knowledge', prefix='', social_image=HERO):
     canonical = DOMAIN + ('/' if path == 'index.html' else '/' + path)
     html = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#264c35"><title>{e(title)} | Millet Zone</title><meta name="description" content="{e(description)}"><link rel="canonical" href="{e(canonical)}"><meta property="og:type" content="website"><meta property="og:title" content="{e(title)} | Millet Zone"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="{e(canonical)}"><meta property="og:image" content="{DOMAIN}/{social_image}"><link rel="icon" href="{prefix}{LOGO}" type="image/png"><link rel="stylesheet" href="{prefix}styles.css"><link rel="stylesheet" href="{prefix}carousel.css"><link rel="stylesheet" href="{prefix}refinements.css"><script src="{prefix}app.js" defer></script></head><body>{header(active,prefix)}<main id="main">{body}</main>{footer(prefix)}</body></html>'''
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#264c35"><title>{e(title)} | Millet Zone</title><meta name="description" content="{e(description)}"><link rel="canonical" href="{e(canonical)}"><meta property="og:type" content="website"><meta property="og:title" content="{e(title)} | Millet Zone"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="{e(canonical)}"><meta property="og:image" content="{DOMAIN}/{social_image}"><link rel="icon" href="{prefix}{LOGO}" type="image/png"><link rel="stylesheet" href="{prefix}styles.css"><link rel="stylesheet" href="{prefix}refinements.css"><script src="{prefix}app.js" defer></script></head><body>{header(active,prefix)}<main id="main">{body}</main>{footer(prefix)}</body></html>'''
     html = re.sub(r'\bmillets zone\b', 'Millet Zone', html, flags=re.I)
     target = OUT / path
     target.parent.mkdir(parents=True,exist_ok=True)
@@ -131,8 +131,37 @@ def recipe_cards(recipes, filtering=False, carousel=False):
         slug,category,_,alt = recipe
         p = PAGES[slug]
         attributes = f' data-filter-card data-category="{category}" data-search="{e(p["title"]+" "+p["description"]+" "+category)}"' if filtering else ''
-        result += f'''<a class="recipe-card" href="recipes/{slug}.html"{attributes}><div class="recipe-image">{image(recipe_image(recipe),alt,thumbnail=True)}<span class="round-arrow" aria-hidden="true">↗</span></div><div class="recipe-type">{category} · Siridhanya kitchen</div><h3>{e(p['title'])}</h3><p>{e(p['description'])}</p></a>'''
+        result += f'''<a class="recipe-card" href="recipes/{slug}.html" data-recipe-modal="{slug}"{attributes}><div class="recipe-image">{image(recipe_image(recipe),alt,thumbnail=True)}<span class="round-arrow" aria-hidden="true">↗</span></div><div class="recipe-type">{category} · Siridhanya kitchen</div><h3>{e(p['title'])}</h3><p>{e(p['description'])}</p></a>'''
     return result + '</div>' + ('</section>' if carousel else '')
+
+
+def recipe_modal(recipe):
+    slug, category, _, alt = recipe
+    page = PAGES[slug]
+    content, listing = [], False
+    for block in page['blocks']:
+        kind = block['type']
+        text = block.get('text', '').strip()
+        if kind != 'list-item' and listing:
+            content.append('</ul>')
+            listing = False
+        if kind == 'heading' and text:
+            content.append(f'<h3>{e(readable(text))}</h3>')
+        elif kind == 'list-item' and text:
+            if not listing:
+                content.append('<ul>')
+                listing = True
+            content.append(f'<li>{linked_text(text)}</li>')
+        elif text:
+            if text.upper().rstrip(':') in ('INGREDIENTS', 'METHOD', 'PREPARATION', 'PROCEDURE'):
+                content.append(f'<h3>{e(text.capitalize())}</h3>')
+            else:
+                content.append(f'<p>{linked_text(text)}</p>')
+    if listing:
+        content.append('</ul>')
+    note = RECIPE_NOTES.get(slug)
+    note_html = f'<aside class="info-note recipe-incomplete"><strong>A note on this recipe.</strong> {e(note)}</aside>' if note else ''
+    return f'''<div class="recipe-modal" id="recipe-modal-{slug}" role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title-{slug}" hidden><div class="recipe-modal-card"><button class="recipe-modal-close" type="button" data-recipe-close aria-label="Close recipe details">×</button><div class="recipe-modal-grid"><div>{image(recipe_image(recipe), alt, cls='recipe-modal-image', eager=True)}</div><div class="recipe-modal-content"><span class="eyebrow">{e(category)} · Siridhanya kitchen</span><h2 id="recipe-modal-title-{slug}">{e(page['title'])}</h2><p class="recipe-modal-description">{e(page['description'])}</p>{note_html}<div class="recipe-modal-details">{''.join(content)}</div><a class="button" href="recipes/{slug}.html">Open full recipe {ARROW}</a></div></div></div></div>'''
 
 
 FAQS = [
@@ -177,11 +206,12 @@ def build_millets():
 def build_recipes():
     body = intro('Everyday food.<br><span class="serif">A new grain.</span>','Rice, idli, dosa, pongal, and more. Find something familiar to make from the Millet Zone recipe collection.','The Siridhanya kitchen')
     filters = ''.join(f'<button type="button" class="filter-button" data-filter="{value}" aria-pressed="{str(value=="all").lower()}">{name}</button>' for value,name in [('all','All recipes'),('Breakfast','Breakfast'),('Meals','Meals'),('Breads','Breads'),('Sweets','Sweets')])
-    body += f'<div class="wrap catalog"><div class="filter-bar"><div class="filters" role="group" aria-label="Filter recipes">{filters}</div><label class="search"><span aria-hidden="true">⌕</span><input type="search" data-search aria-label="Search recipes" placeholder="Find a recipe…"></label></div><p class="filter-status" data-filter-status role="status">12 recipes to explore</p>{recipe_cards(RECIPES,True,True)}<div class="empty-state" data-empty hidden><h2>No recipes found.</h2><p>Try another grain or dish, or clear the filters.</p><button type="button" data-reset class="button">Show all recipes</button></div><aside class="info-note"><strong>Before you begin.</strong> Soaking and cooking instructions vary by dish. Follow the individual recipe; missing quantities and source inconsistencies are noted where they occur. <a href="articles/recipes.html">Read the cooking introduction →</a></aside></div>'
+    modals = ''.join(recipe_modal(recipe) for recipe in RECIPES)
+    body += f'<div class="wrap catalog"><div class="filter-bar"><div class="filters" role="group" aria-label="Filter recipes">{filters}</div><label class="search"><span aria-hidden="true">⌕</span><input type="search" data-search aria-label="Search recipes" placeholder="Find a recipe…"></label></div><p class="filter-status" data-filter-status role="status">12 recipes to explore</p>{recipe_cards(RECIPES,True)}<div class="empty-state" data-empty hidden><h2>No recipes found.</h2><p>Try another grain or dish, or clear the filters.</p><button type="button" data-reset class="button">Show all recipes</button></div><aside class="info-note"><strong>Before you begin.</strong> Soaking and cooking instructions vary by dish. Follow the individual recipe; missing quantities and source inconsistencies are noted where they occur. <a href="articles/recipes.html">Read the cooking introduction →</a></aside></div>{modals}'
     write_page('recipes.html','Millet recipes',PAGES['recipes']['description'],body,'recipes')
 
 
-KNOWLEDGE = [('recipes','In the kitchen'),('faqs','Questions & answers'),('links','Watch & read'),('about','The grains'),('home','The original introduction'),('products','Grain reference'),('natural-health-tips','Source health reading'),('disease-protocols','Source health reading'),('cancer','Source health reading'),('kashya','Plants & decoctions'),('feedback','Community voices')]
+KNOWLEDGE = [('faqs','Questions & answers'),('links','Watch & read'),('about','The grains'),('home','The original introduction'),('products','Grain reference'),('natural-health-tips','Source health reading'),('disease-protocols','Source health reading'),('cancer','Source health reading'),('kashya','Plants & decoctions'),('feedback','Community voices')]
 
 
 def book_inquiry(title):
@@ -392,7 +422,7 @@ def build_article(slug):
 
 def main():
     OUT.mkdir(exist_ok=True)
-    for name in ('styles.css','app.js','carousel.css','refinements.css'):
+    for name in ('styles.css','app.js','refinements.css'):
         shutil.copy2(ROOT/name,OUT/name)
     build_home()
     build_millets()

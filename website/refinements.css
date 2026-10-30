@@ -8,7 +8,7 @@ html{scroll-padding-top:125px}
 .grain-jump-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
 .grain-jump-links a{padding:8px 18px;border:1px solid var(--line);border-radius:30px;font-size:14px}
 .grain-jump-links a:hover{background:var(--cream)}
-.millet-profile{grid-template-columns:220px minmax(0,1fr);gap:32px;max-width:1000px;margin-inline:auto;padding-block:36px}
+.millet-profile{grid-template-columns:220px minmax(0,1fr);gap:56px;max-width:1000px;margin-inline:auto;padding-block:36px}
 .millet-profile>img{width:220px;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:14px;align-self:center}
 .millet-profile h2{font-size:32px}
 .millet-profile .nutrition{margin-top:18px}
@@ -59,13 +59,27 @@ html{scroll-padding-top:125px}
 .article-body .source-line{line-height:1.8}
 .article-body :target{scroll-margin-top:130px}
 .article-body table{max-width:100%}
+.modal-open{overflow:hidden}
+.recipe-modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:30px;background:rgba(23,53,36,.68)}
+.recipe-modal[hidden]{display:none}
+.recipe-modal-card{position:relative;width:min(70vw,1400px);max-height:min(820px,calc(100vh - 60px));overflow:auto;padding:44px;background:white;border-radius:22px;box-shadow:0 24px 80px rgba(0,0,0,.24)}
+.recipe-modal-grid{display:grid;grid-template-columns:minmax(380px,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.recipe-modal-image{width:100%;aspect-ratio:1.05;object-fit:contain;background:var(--cream);border-radius:16px}
+.recipe-modal-content h2{font-size:clamp(32px,4vw,52px);margin-bottom:16px}
+.recipe-modal-description{color:var(--muted);font-size:15px;margin-bottom:22px}
+.recipe-modal-details{margin:24px 0 28px;border-top:1px solid var(--line);padding-top:18px}
+.recipe-modal-details h3{font-size:20px;margin-top:22px}
+.recipe-modal-details p{color:var(--muted)}
+.recipe-modal-details ul{margin-top:8px}
+.recipe-modal-close{position:absolute;top:15px;right:17px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:white;color:var(--green);font-size:27px;line-height:1}
+.recipe-modal-close:hover{background:var(--cream)}
 @media(max-width:800px){
  .header-inner{height:94px}.brand-logo{width:98px;max-height:88px}.nav{top:94px}
  .article-aside{position:static}.millet-profile{grid-template-columns:185px minmax(0,1fr);gap:25px}.millet-profile>img{width:185px}
  .millet-profile h2{font-size:30px}.millet-profile .nutrition td,.millet-profile .nutrition th{padding-inline:5px}
 }
 @media(max-width:560px){
- .millet-profile{grid-template-columns:minmax(0,1fr);gap:20px;padding-block:30px}
+ .millet-profile{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:30px}
  .millet-profile>img{width:180px;max-width:100%;justify-self:start}
  .millet-profile .aliases{margin:10px 0 14px}.grain-jump-links{gap:7px}.grain-jump-links a{font-size:13px;padding:8px 14px}
  .faq summary{padding-right:25px;font-size:15px}.faq .answer{padding-left:0;font-size:14px}
@@ -75,5 +89,6 @@ html{scroll-padding-top:125px}
  .resource-card h2,.resource-card h3{font-size:21px}.resource-description,.resource-description p{font-size:14px}
  .book-grid{grid-template-columns:1fr}.book-card{padding:21px}.book-card h3{font-size:22px}
  .faq-source-answer h2{font-size:18px}.knowledge-card h3{font-size:25px}
+ .recipe-modal{padding:16px}.recipe-modal-card{max-height:calc(100vh - 32px);padding:30px 22px 24px}.recipe-modal-grid{grid-template-columns:1fr;gap:22px}.recipe-modal-image{max-height:240px;aspect-ratio:1.5}
 }
 @media print{.carousel-toolbar,.grain-jump-links{display:none!important}.brand-logo{max-width:110px}}

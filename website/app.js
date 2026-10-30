@@ -172,6 +172,40 @@
     filterCards();
     search?.focus();
   });
+
+  const recipeModals = [...document.querySelectorAll('.recipe-modal')];
+  let recipeModalTrigger = null;
+  const closeRecipeModal = modal => {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    recipeModalTrigger?.focus();
+    recipeModalTrigger = null;
+  };
+  document.querySelectorAll('[data-recipe-modal]').forEach(card => {
+    card.addEventListener('click', event => {
+      const modal = document.getElementById(`recipe-modal-${card.dataset.recipeModal}`);
+      if (!modal) return;
+      event.preventDefault();
+      recipeModalTrigger = card;
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      modal.querySelector('[data-recipe-close]')?.focus();
+    });
+  });
+  recipeModals.forEach(modal => {
+    modal.querySelector('[data-recipe-close]')?.addEventListener('click', () => closeRecipeModal(modal));
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeRecipeModal(modal);
+    });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      const openModal = recipeModals.find(modal => !modal.hidden);
+      if (openModal) closeRecipeModal(openModal);
+    }
+  });
+
   document.querySelectorAll('[data-disclosures]').forEach(button => button.addEventListener('click', () => {
     document.querySelectorAll('.health-reading').forEach(section => { section.open = button.dataset.disclosures === 'open'; });
   }));
