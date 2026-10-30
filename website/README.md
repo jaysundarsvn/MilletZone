@@ -54,3 +54,29 @@ The validator checks local references offline. It does not verify external websi
 5. Once DNS and HTTPS are active, open the live home page and several detail pages directly. Verify images, internal links, navigation, and mobile layout. Each generated `.html` page must be available at its original path.
 
 For a host with build automation, select this `website` directory as the build root, use `python build.py` as the build command, and `dist` as the publish directory. Otherwise, build locally and upload the output. No server-side application process is required in production.
+
+### Deploy with Vercel
+
+The included [vercel.json](./vercel.json) configures Vercel to run `python build.py`
+from this directory and publish `dist`.
+
+From the repository root, install the Vercel CLI if needed and deploy:
+
+```powershell
+npm install --global vercel
+vercel login
+vercel --cwd website
+```
+
+Follow the prompts to link or create the project. When you are ready to deploy
+the production version, run:
+
+```powershell
+vercel --cwd website --prod
+```
+
+You can also import the GitHub repository in the Vercel dashboard. Set
+**Root Directory** to `website`; the included configuration supplies the build
+command and output directory. After deployment, add your custom domain under
+**Project Settings → Domains**, then configure the DNS records Vercel provides
+at your domain registrar.
